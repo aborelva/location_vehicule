@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello VehiculesController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+
+
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code><a href="{{ 'C:/Users/alexia.borelvaéhotma/Desktop/wf3_codes/synfony/location/src/Controller/VehiculesController.php'|file_link(0) }}">src/Controller/VehiculesController.php</a></code></li>
+        <li>Your template at <code><a href="{{ 'C:/Users/alexia.borelvaéhotma/Desktop/wf3_codes/synfony/location/templates/vehicules/index.html.twig'|file_link(0) }}">templates/vehicules/index.html.twig</a></code></li>
+    </ul>
+</div>
+
+{% for notification in app.flashes('success') %}
+    <div class="alert alert-success col-mt-6">{{notification}}</div>
+{% endfor %}
+
+
+{% if vehicule %}
+
+    <table class="table table-hover text-center">
+        <thead class="bg-dark text-white">
+            <tr>
+                <th>Véhicule</th>
+                <th>Titre</th>
+                <th>Marque</th>
+                <th>Modèle</th>
+                <th>Description</th>
+                <th>Photo</th>
+                <th>Prix Journalier</th>
+                <th>Agence</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for vehicules in vehicule %}
+                <tr>
+                    <td>{{vehicules.id}}</td>
+                    <td>{{vehicules.titre}}</td>
+                    <td>{{vehicules.marque}}</td>
+                    <td>{{vehicules.modele}}</td>
+                    <td>{{vehicules.description}}</td>
+                    <td><img src="{{vehicules.photo}}" alt=""></td>
+                    <td>{{vehicules.prix_journalier}}</td>
+                    <td>{{vehicules.ville}}<td>
+                    <td>
+                        <a href="{{path('vehicules_detail', {'id': vehicules.id}) }}"><img class="modify" src="{{asset('img/details.png')}}" alt=""></a>
+                        <a href="{{ path('vehicules_update', {'id': vehicules.id}) }}"><img class="modify" src="{{asset('img/modify.png')}}"></a>
+                        <a href="{{path('vehicules_delete', {'id': vehicules.id} )}}"><img class="modify" src="{{asset('img/supprimer.png')}}" alt=""></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% else %}
+<h4>Aucun véhicule pour le moment</h4>
+{% endif %}
+
+{{form(formVehicule)}}
+{% endblock %}

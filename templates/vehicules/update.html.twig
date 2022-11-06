@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Véhicule{% endblock %}
+
+{% block body %}
+
+  {% for notification in app.flashes('success') %}
+    <div class="alert alert-success col-mt-6">{{notification}}</div>
+{% endfor %}
+
+{{form(formVehicule)}};
+    
+
+<div class="row justify-content-end"> 
+    <a class='btn btn-info p-2 col-md-3' href="{{ path('vehicules') }}">Retour</a>
+</div>
+
+{% endblock %}

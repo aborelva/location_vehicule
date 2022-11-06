@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('home')}}">Accueil</a>
+        </li>
+        {% if app.user == null %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('register')}}">Inscription</a>
+        </li>
+        {% endif %}
+        {% if app.user == null %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('login_check')}}">Connexion</a>
+        </li>
+        {% endif %}
+        <li class="nav-item">
+          <a class="nav-link" href="#">contact</a>
+        </li>
+        {% if is_granted('ROLE_ADMIN')  %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+            Dashboard
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{path('agence')}}">Agence</a></li>
+            <li><a class="dropdown-item" href="{{path('vehicules')}}">Nos Véhicules</a></li>
+            <li><a class="dropdown-item" href="{{path('admin')}}">Administration</a></li>
+          </ul>
+        </li>
+        {% endif %}
+        
+      </ul>
+    </div>
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+
+  </div>
+</nav>
+

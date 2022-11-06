@@ -1,0 +1,62 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+agence:
+  path: /agence
+  controller: App\Controller\Agence::index
+
+admin:
+  path: /admin
+  controller: App\Controller\AdminController::index
+
+admin_users:
+  path: /admin/users
+  controller: App\Controller\AdminController::usersList
+
+user_update: 
+  path: /users/update/{id}
+  controller: App\Controller\AdminController::updateUser
+
+
+agence_update:
+  path: /agence/update/{id}
+  controller: App\Controller\AgenceController::update
+
+agence_delete:
+  path: /agence/delete/{id}
+  controller: App\Controller\AgenceController::delete
+
+agence_detail:
+  path: /agence/detail/{id}
+  controller: App\Controller\AgenceController::detail
+
+  
+vehicules:
+  path: /vehicules
+  controller: App\Controller\VehiculesController::index
+
+vehicules_update:
+  path: /vehicules/update/{id}
+  controller: App\Controller\VehiculesController::update
+
+vehicules_delete:
+  path: /vehicules/delete/{id}
+  controller: App\Controller\VehiculesController::update
+
+vehicules_detail:
+  path: /vehicules/detail/{id}
+  controller: App\Controller\VehiculesController::detail
+
+
+home:
+  path: /home
+  controller: App\Controller\HomeController::home
+
+login_check:
+  path: login/check
+
+register:
+  path: /register
+  controller: App\Controller\RegistrationController::registration  
+

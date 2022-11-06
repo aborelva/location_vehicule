@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de l'agence{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<h1>Détails de l'agence {{agences.titre}}</h1>
+</br>
+<table class="table table-hover text-center">
+    <thead class="bg-dark text-white">
+        <tr>
+            <th>Agence</th>
+            <th>Titre</th>
+            <th>Adresse</th>
+            <th>Ville</th>
+            <th>CP</th>
+            <th>Description</th>
+            <th>Photo</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+         <tr>
+                <td>{{agences.id}}</td>
+                <td>{{agences.titre}}</td>
+                <td>{{agences.adresse}}</td>
+                <td>{{agences.ville}}</td>
+                <td>{{agences.cp}}</td>
+                <td>{{agences.description}}</td>
+                <td><img src="{{agences.photo}}" alt="image"></td>
+            </tr>
+        
+    </tbody>
+</table>
+
+</br>
+
+<div class="row justify-content-end"> 
+    <a class='btn btn-info p-2 col-md-3' href="{{ path('agence') }}">Retour</a>
+</div>
+
+{% endblock %}

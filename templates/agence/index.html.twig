@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Agence{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1> {{ controller_name }}! ✅</h1>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code><a href="{{ 'C:/Users/alexia.borelvaéhotma/Desktop/wf3_codes/synfony/location/src/Controller/AgenceController.php'|file_link(0) }}">src/Controller/AgenceController.php</a></code></li>
+        <li>Your template at <code><a href="{{ 'C:/Users/alexia.borelvaéhotma/Desktop/wf3_codes/synfony/location/templates/agence/index.html.twig'|file_link(0) }}">templates/agence/index.html.twig</a></code></li>
+    </ul>
+</div>
+
+
+{% for notification in app.flashes('success') %}
+    <div class="alert alert-success col-mt-6">{{notification}}</div>
+{% endfor %}
+
+{% if agence %}
+
+    <table class="table table-hover text-center">
+        <thead class="bg-dark text-white">
+            <tr>
+                <th>Agence</th>
+                <th>Titre</th>
+                <th>Adresse</th>
+                <th>Ville</th>
+                <th>CP</th>
+                <th>Description</th>
+                <th>Photo</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for agences in agence %}
+                <tr>
+                    <td>{{agences.id}}</td>
+                    <td>{{agences.titre}}</td>
+                    <td>{{agences.adresse}}</td>
+                    <td>{{agences.ville}}</td>
+                    <td>{{agences.cp}}</td>
+                    <td>{{agences.description}}</td>
+                    <td><img src="{{agences.photo}}" alt="image"></td>
+                    <td>
+                        <a href="{{ path('agence_detail', {'id': agences.id})}}"><img class="modify" src="{{asset('img/details.png')}}" alt=""></a>
+                        <a href="{{ path('agence_update', {'id': agences.id}) }}"><img class="modify" src="{{asset('img/modify.png')}}" alt=""></a>
+                        <a href="{{ path('agence_delete', {'id': agences.id}) }}"><img class="modify" src="{{asset('img/supprimer.png')}}" alt=""></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% else %}
+<h4>Aucune agence pour le moment</h4>
+{% endif %}
+{{form(formAgence)}}
+
+{% endblock %}
+

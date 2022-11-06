@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Agence{% endblock %}
+
+{% block body %}
+
+  {% for notification in app.flashes('success') %}
+    <div class="alert alert-success col-mt-6">{{notification}}</div>
+{% endfor %}
+
+<div class="row justify-content-end"> 
+    <a class='btn btn-info p-2 col-md-3' href="{{ path('admin_users') }}">Retour</a>
+</div>
+
+{{form(formUser)}};
+    
+
+
+
+{% endblock %}
